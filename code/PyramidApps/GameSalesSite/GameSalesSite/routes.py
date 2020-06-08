@@ -1,0 +1,13 @@
+def includeme(config):
+    config.add_route('home', '/')
+    config.add_route('search', '/search')
+    config.add_route('newListing', '/new-listing')
+    config.add_route('myListings', '/my-listings')
+    config.add_route('myAccount', '/my-account')
+    config.add_route('signup', '/signup')
+    config.add_route('login', '/login')
+    config.add_route('logout', '/logout')
+    config.add_route('deleteConfirm', '/delete-confirm')
+    config.add_route('listingPurchase', '/listing-{number}')
+    config.add_route('listingEdit', '/edit-listing-{number}')
+    config.add_route('listingDelete', '/del-listing-{number}')

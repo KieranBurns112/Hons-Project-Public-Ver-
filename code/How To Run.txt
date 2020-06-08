@@ -1,0 +1,45 @@
+Flask -
+ Requires:
+  - Python
+  - Flask
+  - Flask-Bcrypt
+
+  How to run Locally:
+   - Open Command Prompt
+   - Navigate to this directory, then into "FlaskApps", 
+      then the folder of the app you wish to open 
+      (e.g. /GameSalesSite) 
+   - Enter the command; "flask run"
+   - Open a web browser to "localhost:5000"
+
+Django -
+ Requires:
+  - Python
+  - Django
+  - Django-Bcrypt
+
+  How to run Locally:
+   - Open Command Prompt
+   - Navigate to this directory, then into "DjangoApps", 
+      then the folder of the app you wish to open 
+      (e.g. /GameSalesSite) 
+   - Enter the command; "python manage.py runserver"
+   - Open a web browser to "localhost:8000"
+
+Pyramid -
+ Requires:
+  - Python
+  - Pyramid
+  - Passlib
+
+  How to run Locally:
+   - Open Command Prompt
+   - Navigate to this directory, then into "PyramidApps", 
+      then the folder of the app you wish to open 
+      (e.g. /GameSalesSite)
+   - For PyramidTest:
+       - Enter the command; "python app.py"  
+   - For GameSalesSite: 
+       - Enter the command; "python setup.py develop" (first time running only)
+       - Enter the command; "pserve production.ini"
+   - Open a web browser to "localhost:6543"

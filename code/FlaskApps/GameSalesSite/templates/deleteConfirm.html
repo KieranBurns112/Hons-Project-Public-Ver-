@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" a href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <title> Video Game Resale </title>
+  </head>
+  <body>
+    <!-- NavBar Element, used on each page of the site -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <a class="navbar-brand">Used Video Game Resale</a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="\">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="search">Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="new-listing">Create Listing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="my-listings">My Listings</a>
+        </li>
+      </ul>
+
+      {% if signedIn %}
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="my-account">{{ username }}</a>
+          </li>
+        </ul>
+      {% else %}
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="signup">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login">Log In</a>
+          </li>
+        </ul>
+      {% endif %}
+
+
+    </nav>
+    <br>
+    <!-- NavBar Element, used on each page of the site -->
+
+    <div class="container">
+      <br>
+      <h2>
+        By selecting "Delete Account", your account alongside all related data,
+        including your listings, will be deleted. Your username will also become
+        publicly available for any user to take when creating a new account of
+        their own. Only click the below button if you're absolutely sure you
+        wish to terminate your account.
+      </h2>
+      <br><br>
+      <form method='POST'>
+          <center><button type="submit" class="btn btn-danger btn-lg btn-block">Delete Account</button></center>
+      </form>
+      <br><br>
+    </div>
+  </body>
+</html>

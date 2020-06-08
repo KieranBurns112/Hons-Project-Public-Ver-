@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" a href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <title> Video Game Resale </title>
+  </head>
+  <body>
+    <!-- NavBar Element, used on each page of the site -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <a class="navbar-brand">Used Video Game Resale</a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="\">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="search">Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="new-listing">Create Listing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="my-listings">My Listings</a>
+        </li>
+      </ul>
+
+      {% if signedIn %}
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="my-account">{{ username }}</a>
+          </li>
+        </ul>
+      {% else %}
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login">Log In</a>
+          </li>
+        </ul>
+      {% endif %}
+
+    </nav>
+    <!-- NavBar Element, used on each page of the site -->
+    
+    <!-- Error Handling -->
+    {% if error != "none" %}
+      <div class="alert alert-danger" role="alert">
+        {{ error }}
+      </div>
+    {% endif %}
+    <br>
+    <!-- Error Handling -->
+
+
+    <div class="container">
+      <br>
+      <center><h2>Sign Up</h2></center>
+      <br>
+      <form method='POST'>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        </div>
+
+        <div class="form-group">
+          <label for="rePassword">Re-Enter Password</label>
+          <input type="password" class="form-control" id="rePassword" name="rePassword" placeholder="Re-Enter Password">
+        </div>
+
+        <br>
+        <center><button type="submit" class="btn btn-primary btn-lg btn-block">Sign Up</button></center>
+      </form>
+    </div>
+  </body>
+</html>

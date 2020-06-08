@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" a href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <title> Video Game Resale </title>
+  </head>
+  <body>
+    <!-- NavBar Element, used on each page of the site -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <a class="navbar-brand">Used Video Game Resale</a>
+      <ul class="navbar-nav mr-auto">
+
+        {% if pageType == "home" %}
+          <li class="nav-item active">
+            <a class="nav-link">Home</a>
+          </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="\">Home</a>
+        </li>
+        {% endif %}
+
+        {% if pageType == "search-results" %}
+          <li class="nav-item active">
+            <a class="nav-link">Search</a>
+          </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="search">Search</a>
+        </li>
+        {% endif %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="new-listing">Create Listing</a>
+        </li>
+
+        {% if pageType == "my-listings" %}
+          <li class="nav-item active">
+            <a class="nav-link">My Listings</a>
+          </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="my-listings">My Listings</a>
+        </li>
+        {% endif %}
+      </ul>
+
+      {% if signedIn %}
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="my-account">{{ username }}</a>
+          </li>
+        </ul>
+      {% else %}
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="signup">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login">Log In</a>
+          </li>
+        </ul>
+      {% endif %}
+
+    </nav>
+    <br>
+    <!-- NavBar Element, used on each page of the site -->
+
+    {% if results > 0 %}
+      {%  if order == "descending" %}
+        {% for i in range(results)|reverse %}
+          <div class="container" style="background:#e6e6e6;border:2px solid DarkGray; border-radius:12px">
+            <center><h2>{{ listings[i][0] }}</h2></center>
+            <h5>Platform: {{ listings[i][1] }}</h5>
+            <h5>Price: £{{ listings[i][2] }}</h5>
+            <h5>Seller: {{ listings[i][3] }}</h5>
+            {% if username == listings[i][3] %}
+              <center>
+              <a class="btn btn-warning btn-lg" href="{{ '/edit-listing-%s'%listings[i][4] }}" role="button">&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a class="btn btn-danger btn-lg" href="{{ '/del-listing-%s'%listings[i][4] }}" role="button">Delete</a>
+              <center>
+            {% else %}
+              <center><a class="btn btn-success btn-lg" href="{{ '/listing-%s'%listings[i][4] }}" role="button">Purchase</a><center>
+            {% endif %}
+            <br>
+          </div>
+          <br>
+        {% endfor %}
+      {% elif order == "ascending" %}
+        {% for i in range(results) %}
+          <div class="container" style="background:#e6e6e6;border:2px solid DarkGray; border-radius:12px">
+            <center><h2>{{ listings[i][0] }}</h2></center>
+            <h5>Platform: {{ listings[i][1] }}</h5>
+            <h5>Price: £{{ listings[i][2] }}</h5>
+            <h5>Seller: {{ listings[i][3] }}</h5>
+            {% if username == listings[i][3] %}
+              <center>
+              <a class="btn btn-warning btn-lg" href="{{ '/edit-listing-%s'%listings[i][4] }}" role="button">&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a class="btn btn-danger btn-lg" href="{{ '/del-listing-%s'%listings[i][4] }}" role="button">Delete</a>
+              <center>
+            {% else %}
+              <center><a class="btn btn-success btn-lg" href="{{ '/listing-%s'%listings[i][4] }}" role="button">Purchase</a><center>
+            {% endif %}
+            <br>
+          </div>
+          <br>
+        {% endfor %}
+      {% endif %}
+    {% else %}
+      {% if pageType == "home" %}
+        <br><center><h2> No Listings Are Currently Available! </h2></center>
+      {% elif pageType == "my-listings" %}
+        <br><center><h2> You have no listings! </h2></center>
+      {% elif pageType == "search-results" %}
+        <br><center><h2> No listings matched your search criteria! </h2></center>
+      {% endif %}
+    {% endif %}
+  </body>
+</html>
